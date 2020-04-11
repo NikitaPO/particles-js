@@ -8,7 +8,7 @@
     particleRadius: 2,
     particleCount: 180,
     particleMaxVelocity: 0.2,
-    particleLife: 100,
+    particleLife: 10,
   };
 
   let inputs = document.querySelectorAll(".properties input");
