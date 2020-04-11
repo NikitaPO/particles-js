@@ -4,9 +4,33 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
+      rel="stylesheet"
+    />
     <title>Particles</title>
   </head>
   <body>
+    <div class="properties-wrapper">
+      <form name="properties" class="properties">
+        <h3 class="properties-title">Properties</h3>
+        <ul>
+          <li>Background color: <input type="color" name="bgColor" /></li>
+          <li>Line color: <input type="color" name="lineColor" /></li>
+          <li>Line length: <input type="text" name="lineLength" /></li>
+          <li>Line width: <input type="text" name="lineWidth" /></li>
+          <li>Particle color: <input type="color" name="particleColor" /></li>
+          <li>Particle radius: <input type="text" name="particleRadius" /></li>
+          <li>Particle count: <input type="text" name="particleCount" /></li>
+          <li>
+            Particle max velocity:
+            <input type="text" name="particleMaxVelocity" />
+          </li>
+          <li>Particle life: <input type="text" name="particleLife" /></li>
+        </ul>
+      </form>
+      <input type="button" class="toggleButton" value="»" />
+    </div>
     <div class="wrapper">
       <div class="particles"></div>
     </div>

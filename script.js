@@ -1,16 +1,36 @@
 (function () {
   properties = {
-    bgColor: "rgba(2, 2, 3, 1)",
-    lineColor: "rgb(0, 255, 64)",
+    bgColor: "#020203",
+    lineColor: "#00ff40",
     lineLength: 150,
     lineWidth: 0.5,
-    lineOpacityChange: true,
-    particleColor: "rgba(0, 255, 64, 1)",
+    particleColor: "#00ff40",
     particleRadius: 2,
     particleCount: 180,
     particleMaxVelocity: 0.2,
     particleLife: 100,
   };
+
+  let inputs = document.querySelectorAll(".properties input");
+
+  inputs.forEach((input) =>
+    input.addEventListener("change", (e) => {
+      e.preventDefault();
+      inputs.forEach((input) => {
+        properties[input.name] = input.value;
+      });
+    })
+  );
+
+  let toggleButton = document.querySelector(".toggleButton");
+  let propertiesWindow = document.querySelector(".properties-wrapper");
+  toggleButton.addEventListener("click", () => {
+    xPos = propertiesWindow.style.left;
+    propertiesWindow.style.left = `${xPos + 2}px`;
+    console.log(propertiesWindow.style.left);
+
+    toggleButton.value = "«";
+  });
 
   let canvas = document.createElement("canvas");
   ctx = canvas.getContext("2d");
@@ -98,10 +118,8 @@
         length = Math.sqrt((x2 - x1) ** 2 + (y2 - y1) ** 2);
 
         if (length < properties.lineLength) {
-          if (properties.lineOpacityChange) {
-            opacity = 1 - length / properties.lineLength;
-            ctx.globalAlpha = opacity;
-          }
+          opacity = 1 - length / properties.lineLength;
+          ctx.globalAlpha = opacity;
           ctx.lineWidth = properties.lineWidth;
           ctx.strokeStyle = properties.lineColor;
           ctx.beginPath();
@@ -125,6 +143,10 @@
     for (let i = 0; i < properties.particleCount; i++) {
       particles.push(new Particle());
     }
+    for (let prop in properties) {
+      document.properties[prop].value = properties[prop];
+    }
+
     loop();
   }
 
