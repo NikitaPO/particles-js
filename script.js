@@ -26,10 +26,13 @@
   let propertiesWindow = document.querySelector(".properties-wrapper");
   toggleButton.addEventListener("click", () => {
     xPos = propertiesWindow.style.left;
-    propertiesWindow.style.left = `${xPos + 2}px`;
-    console.log(propertiesWindow.style.left);
-
-    toggleButton.value = "«";
+    if (xPos === "0px") {
+      propertiesWindow.style.left = "-230px";
+      toggleButton.value = "»";
+    } else {
+      propertiesWindow.style.left = "0px";
+      toggleButton.value = "«";
+    }
   });
 
   let canvas = document.createElement("canvas");
